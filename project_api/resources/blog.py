@@ -11,7 +11,7 @@
 
 from flask_restful import reqparse, abort, Resource
 
-from project_api.common.http_auth import auth
+from project_api.common.http_token_auth import token_auth
 from project_api.common.exceptions import ResourceDoesNotExist
 
 
@@ -24,7 +24,7 @@ class Blog(Resource):
     """
     Blog
     """
-    decorators = [auth.login_required]
+    decorators = [token_auth.login_required]
 
     def __init__(self):
         self.parse = reqparse.RequestParser()
@@ -38,7 +38,8 @@ class Blog(Resource):
         get
         Example:
             curl http://0.0.0.0:5000/api/blog/1
-            curl -u username:password http://0.0.0.0:5000/api/blog/1
+            curl http://0.0.0.0:5000/api/blog/1 -H "Authorization: Token eyJhbGciOiJIUzI1NiIsImV4cCI6MTUwMjc3NTg4OSwiaWF0IjoxNTAyNzc1Mjg5fQ.eyJ1c2VyX2lkIjoxfQ.Z4G_vjLzkV_alxXBPfxa0H4Kh5gC4PD5LA-iqNynB7o"
+            curl http://0.0.0.0:5000/api/blog/1 --oauth2-bearer eyJhbGciOiJIUzI1NiIsImV4cCI6MTUwMjc3NTg4OSwiaWF0IjoxNTAyNzc1Mjg5fQ.eyJ1c2VyX2lkIjoxfQ.Z4G_vjLzkV_alxXBPfxa0H4Kh5gC4PD5LA-iqNynB7o
         :param blog_id:
         :return:
         """
