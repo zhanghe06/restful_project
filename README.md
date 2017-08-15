@@ -1,8 +1,12 @@
 ## Flask-RESTful
 
-http://flask-restful.readthedocs.io/
+http://flask-restful.readthedocs.io
 
 http://github.com/twilio/flask-restful
+
+https://flask-httpauth.readthedocs.io
+
+https://github.com/miguelgrinberg/Flask-HTTPAuth
 
 
 project deploy
